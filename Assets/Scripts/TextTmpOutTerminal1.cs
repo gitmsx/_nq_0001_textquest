@@ -30,10 +30,10 @@ public class TextTmpOutTerminal1 : MonoBehaviour
 
 
         str[0] = "Computer <#800000> science is the study <#FFFF00> of computation,<#0000FF> automation, and information.[1]";
-        str[1] = "Массив <#FFFF00> представляет набор однотипных данных i and Computer science spans theoretical disciplines (such as algorithms, theory of computation, ";
-        str[2] = "information theory,<##006400> and automation) to practical<##016400> disciplines (including the design and implementation ";
-        str[3] = "of hardware and software).[2][3][4] Computer science is generally considered an area of academic research and distinct from computer programming.";
-        str[4] = "2 Computer science is the study of computation, automation, and information.[1]";
+        str[1] = "\nМассив <#FFFF00> представляет набор <#800000>однотипных данных i <#FF00FF>and Computer science spans theoretical disciplines (such as algorithms, theory of computation, ";
+        str[2] = "\ninformation theory,<##006400> and automation) to practical<##016400> disciplines (including the design and implementation ";
+        str[3] = "\nof hardware and software).[2][3][4] Computer science is generally considered an area of academic research and distinct from computer programming.";
+        str[4] = "\n2 Computer <#00FFFF>science is the study of computation, automation, and information.[1]";
 
         text0lineShowed = false;
 
