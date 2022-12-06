@@ -7,10 +7,12 @@ using System.Globalization;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
-public class TextTmpOutTerminal2 : MonoBehaviour
+public class TextTmpOutTerminal4 : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI textOut;
+    bool text0lineShowed = false;
+    bool textlineShowed = false;
 
     private Coroutine CourutineWork;
     public float SpeedText = 0.1f;
@@ -27,20 +29,17 @@ public class TextTmpOutTerminal2 : MonoBehaviour
 
 
 
-        str[0] = "Computer1<#800000>23science is the study12<#FFFF00>34 of computation,1123<#0000FF>45678 automation, and information.[1]<";
+        str[0] = "Computer <#800000> science is the study <#FFFF00> of computation,<#0000FF> automation, and information.[1]";
         str[1] = "\nМассив <#FFFF00> представляет набор <#800000>однотипных данных i <#FF00FF>and Computer science spans theoretical disciplines (such as algorithms, theory of computation, ";
         str[2] = "\ninformation theory,<##006400> and automation) to practical<##016400> disciplines (including the design and implementation ";
         str[3] = "\nof hardware and software).[2][3][4] Computer science is generally considered an area of academic research and distinct from computer programming.";
         str[4] = "\n2 Computer <#00FFFF>science is the study of computation, automation, and information.[1]";
 
-
+        text0lineShowed = false;
         CourutineWork = null;
-        //str.Length
-        for (int i = 0; i < 1; i++)
-        CourutineWork = StartCoroutine(printtext2(i, str[i]));
-        CourutineWork = StartCoroutine(printline());
 
-
+        for (int i = 0; i < str.Length; i++)
+            CourutineWork = StartCoroutine(printtext(i, str[i]));
 
         // StartCoroutine(printline());
 
@@ -52,52 +51,22 @@ public class TextTmpOutTerminal2 : MonoBehaviour
     {
         while (CourutineWork != null)
             yield return new WaitForSeconds(0.2f);
-        
+
         foreach (char c in strT)
         {
             textOut.text += c;
 
             yield return new WaitForSeconds(SpeedText);
         }
-
+        text0lineShowed = true;
         CourutineWork = null;
         yield break;
     }
-
-
-
-    IEnumerator printtext2(int i, string strT)
-    {
-        while (CourutineWork != null)
-            yield return new WaitForSeconds(0.2f);
-        char c;
-
-        for (int j = 0; j < strT.Length; j++)
-        {
-            c = strT[j];
-
-            if ((strT[j] == '<') && (j + 1 < strT.Length) && strT[j + 1] == '#')
-            {
-                for (int k = j; k < j + 10; k++)
-                    textOut.text += strT[k];
-                j += 9;
-            }
-            else
-            {
-                textOut.text += c;
-                yield return new WaitForSeconds(SpeedText);
-            }
-        }
-        CourutineWork = null;
-        yield break;
-    }
-
-
 
     IEnumerator printline()
     {
-        while (CourutineWork != null)
-            yield return new WaitForSeconds(0.2f);
+        while (!text0lineShowed)
+            yield return new WaitForSeconds(1.1f);
         for (int i = 1; i < str.Length; i++)
         {
             textOut.text += str[i];
@@ -105,6 +74,12 @@ public class TextTmpOutTerminal2 : MonoBehaviour
         }
 
     }
+
+
+
+
+
+
 
 
 }
